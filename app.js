@@ -4,6 +4,10 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./swagger.json');
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument, showExplorer));
 
 //connect to MongoDB
 mongoose.connect('mongodb://coromondal:password@ds229295.mlab.com:29295/authenticationdb');
